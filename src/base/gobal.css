@@ -1,0 +1,34 @@
+@import './mixins.css';
+
+[c-fff] {
+  color: #fff !important;
+}
+
+@svg 1px-border {
+  height: 4px;
+  width: 4px;
+
+  @rect {
+    @mixin fullsize;
+    fill: var(--color, black);
+    stroke-width: 25%;
+  }
+}
+
+@define-mixin line {
+  margin: 40px 0;
+  border-bottom: 1px solid transparent;
+  border-image: svg(1px-border param(--color #ffce65)) 1 stretch;
+}
+
+.up {
+  @mixin bg "@/assets/up.png";
+  position: absolute;
+  bottom: 40px;
+  width: 14px;
+  height: 15px;
+}
+
+.upwrap {
+  @mixin flexbox;
+}

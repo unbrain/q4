@@ -9,6 +9,13 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "normalize.css": "^8.0.1",
+    "postcss-aspect-ratio-mini": "^1.0.1",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-import": "^12.0.1",
+    "postcss-mixins": "^6.2.1",
+    "postcss-px-to-viewport": "^1.1.0",
+    "postcss-write-svg": "^3.0.1",
     "vue": "^2.6.6"
   },
   "devDependencies": {
@@ -36,7 +43,22 @@
   },
   "postcss": {
     "plugins": {
-      "autoprefixer": {}
+      "postcss-import": {},
+      "postcss-mixins": {},
+      "postcss-aspect-ratio-mini": {},
+      "postcss-write-svg": {},
+      "postcss-cssnext": {},
+      "postcss-px-to-viewport": {
+        "viewportWidth": 640,
+        "viewportHeight": 1136,
+        "unitPrecision": 3,
+        "selectorBlackList": [
+          ".ignore",
+          ".hairlines"
+        ],
+        "minPixelValue": 3,
+        "mediaQuery": false
+      }
     }
   },
   "browserslist": [

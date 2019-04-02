@@ -46,6 +46,46 @@
 <script>
 export default {
   methods: {
+    animate() {
+      var waveX = 0;
+      var waveY = 0;
+      var waveX_min = -203;
+      var waveY_max = canvasHeight * 0.9;
+      var requestAnimationFrame =
+        window.requestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+      function loop() {
+        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+        if (!needAnimate) return;
+        if (waveY < waveY_max) waveY += 1.5;
+        if (waveX < waveX_min) waveX = 0;
+        else waveX -= 3;
+
+        // ctx.globalCompositeOperation&nbsp;=&nbsp;'source-over';
+        ctx.beginPath();
+        ctx.arc(
+          canvasWidth / 2,
+          canvasHeight / 2,
+          canvasHeight / 2,
+          0,
+          Math.PI * 2,
+          true
+        );
+        ctx.closePath();
+        ctx.fill();
+
+        // ctx.globalCompositeOperation&nbsp;=&nbsp;'source-in';
+        ctx.drawImage(waveImage, waveX, canvasHeight - waveY);
+
+        requestAnimationFrame(loop);
+      }
+      loop();
+    },
     initCanvas() {
       let width = this.$refs.wavewrap.clientWidth;
       let height = this.$refs.wavewrap.clientHeight;
@@ -66,23 +106,25 @@ export default {
         let t = Math.min(1.0, (Date.now() - startTime) / time);
 
         if (clockwise) {
-          cp1x = width / 4 + 55 * t;
-          cp1y = -80 + 72 * t;
-          cp2x = width * 0.75 - 51 * t;
-          cp2y = 150 - 79 * t;
+          cp1x = 90 + 55 * t;
+          cp1y = -68 + 72 * t;
+          cp2x = 92 - 51 * t;
+          cp2y = 99 - 79 * t;
         } else {
           cp1x = 145 - 55 * t;
-          cp1y = height * 0.2 - 72 * t;
+          cp1y = 20 - 72 * t;
           cp2x = 41 + 51 * t;
-          cp2y = height * 0.2 + 79 * t;
+          cp2y = 20 + 79 * t;
         }
+
         ctx.clearRect(0, 0, 200, 200);
         ctx.beginPath();
-        ctx.moveTo(0, height * 0.17);
+        ctx.moveTo(0, height);
         // 绘制三次贝塞尔曲线
-        ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, width, height * 0.17);
+        ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, width, height);
         // 绘制圆弧
         ctx.arc(100, 100, 100, 0, radians, 0);
+
         ctx.fillStyle = "rgba(255, 135, 103, .8)";
         ctx.fill();
         ctx.save();
@@ -163,26 +205,26 @@ export default {
 }
 .w1 {
   @mixin flexbox;
+  @mixin bg "@/assets/c1.png";
   width: 487px;
   height: 487px;
   border-radius: 100%;
-  border: 1px solid transparent;
   animation: water 2s linear 1.5s infinite;
 }
 .w2 {
   @mixin flexbox;
+  @mixin bg "@/assets/c2.png";
   width: 403px;
   height: 403px;
   border-radius: 100%;
-  border: 1px solid transparent;
   animation: water 2s linear 1s infinite;
 }
 .w3 {
   @mixin flexbox;
+  @mixin bg "@/assets/c3.png";
   width: 323px;
   height: 323px;
   border-radius: 100%;
-  border: 1px solid transparent;
   animation: water 2s linear 0.5s infinite;
 }
 .w4 {

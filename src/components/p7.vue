@@ -1,72 +1,60 @@
 <template>
   <div :class="$style.bg">
     <div :class="$style.contain">
-      <div :class="$style.title">
-        广告客户数量突破
-        <span c-fff>53万</span>
-      </div>
+      <div :class="$style.title">多重政策刺激内容生产消费</div>
       <div :class="$style.linef"></div>
       <div :class="$style.decription">
-        <p>
-          品牌客户收入同比增长
-          <span c-fff>XX%</span>
-        </p>
-        <p>
-          非阿里收入同比增长
-          <span c-fff>70%</span>
-        </p>
-        <p>
-          中小及自助广告收入同比增长
-          <span c-fff>XXX%</span>
-        </p>
-        <p>
-          客户数环比净增
-          <span c-fff>4.2万个</span>
-        </p>
+        <div>
+          <h2>扶持垂直领域</h2>
+          <p>
+            开放运营的
+            <span c-fff>XX</span>个垂直领域
+          </p>
+          <p>
+            月阅读量增长
+            <span c-fff>XX%</span>
+          </p>
+        </div>
+        <div :class="$style.icon1"></div>
       </div>
       <div :class="$style.lines"></div>
-      <div :class="$style.charttitle">中小及自助广告客户数 （万）</div>
-      <div :class="$style.chart">
-        <div :class="$style.chartline"></div>
-        <div :class="$style.chartdetail">
-          <div :class="$style.q">
-            <div :class="$style.qnum">38.8</div>
-            <div :class="[$style.circle,$style.c1]"></div>
-            <div>2015Q1</div>
-          </div>
-          <div :class="$style.q">
-            <div :class="$style.qnum">44.3</div>
-            <div :class="[$style.circle,$style.c2]"></div>
-            <div>2015Q2</div>
-          </div>
-          <div :class="$style.q">
-            <div :class="$style.qnum">49.4</div>
-            <div :class="[$style.circle,$style.c3]"></div>
-            <div>2015Q3</div>
-          </div>
-          <div :class="$style.q">
-            <div :class="$style.qnum">53.6</div>
-            <div :class="[$style.circle,$style.c4]"></div>
-            <div>2015Q4</div>
-          </div>
+      <div :class="$style.decription">
+        <div>
+          <h2>加速多媒体化</h2>
+          <p>
+            Q4视频日均播放量达
+            <span c-fff>2.9亿</span>
+          </p>
+          <p>
+            同比增长
+            <span c-fff>11倍</span>
+          </p>
         </div>
-        <div :class="[$style.dash,$style.d1]">
-          <div :class="$style.num">30</div>
-          <div :class="$style.dashline"></div>
-        </div>
-        <div :class="[$style.dash,$style.d2]">
-          <div :class="$style.num">40</div>
-          <div :class="$style.dashline"></div>
-        </div>
-        <div :class="[$style.dash,$style.d3]">
-          <div :class="$style.num">50</div>
-          <div :class="$style.dashline"></div>
-        </div>
-        <div :class="[$style.dash,$style.d4]">
-          <div :class="$style.num">60</div>
-          <div :class="$style.dashline"></div>
-        </div>
+        <div :class="$style.icon2"></div>
       </div>
+      <div :class="$style.lines"></div>
+      <div :class="$style.decription">
+        <div>
+          <h2>推出头条文章</h2>
+          <p>
+            使用人群达
+            <span c-fff>XX万</span>
+          </p>
+          <p>
+            文章平均阅读量提升
+            <span c-fff>X倍</span>
+          </p>
+          <p>
+            自媒体分成达
+            <span c-fff>XX亿</span>
+          </p>
+        </div>
+        <div :class="$style.icon3"></div>
+      </div>
+      <div :class="$style.lines"></div>
+    </div>
+    <div :class="$style.upwrap">
+      <div :class="$style.up"></div>
     </div>
   </div>
 </template>
@@ -121,94 +109,33 @@ export default {};
   margin: 0;
 }
 .decription {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding-left: 40px;
   text-align: left;
   color: #ffe599;
   font-size: 24px;
 }
-.charttitle {
-  padding-left: 40px;
-  text-align: left;
-  color: #ffe599;
-  font-size: 20px;
-}
-.chart {
-  position: relative;
-  margin: 0 40px;
-  position: relative;
-  font-size: 18px;
-  flex-direction: column;
-  margin-top: 30px;
-  color: #ffe599;
-  font-size: 20px;
-}
-.chartline {
-  z-index: 10;
-  position: absolute;
-  @mixin bg "@/assets/p6line.png";
-  left: -20px;
-  width: 483px;
-  height: 341px;
-}
-.chartdetail {
-  height: 373px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-evenly;
-}
-.circle {
-  z-index: 100;
-  @mixin bg "@/assets/p6Q.png";
-  width: 26px;
-  height: 26px;
-  padding: 2px;
-}
-.c1 {
-  margin-bottom: 95px;
-}
-.c2 {
-  margin-bottom: 165px;
-}
-.c3 {
-  margin-bottom: 225px;
-}
-.c4 {
-  @mixin bg "@/assets/p6Q1.png";
-  margin-bottom: 280px;
-}
-.q {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.qnum {
-  z-index: 10;
-  margin-bottom: 14px;
-  font-size: 28px;
-  color: #fff;
-}
-.dash {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  left: -40px;
-}
-.d1 {
-  bottom: 40px;
-}
-.d2 {
-  bottom: 145px;
-}
-.d3 {
-  bottom: 250px;
-}
-.d4 {
-  bottom: 355px;
-}
+
 .dashline {
   margin-left: 30px;
   width: 450px;
   border-bottom: 1px dashed #ff7e6c;
+}
+.icon1 {
+  @mixin bg "@/assets/p7icon1.png";
+  width: 175px;
+  height: 151px;
+}
+.icon2 {
+  @mixin bg "@/assets/p7icon2.png";
+  width: 131px;
+  height: 105px;
+}
+.icon3 {
+  @mixin bg "@/assets/p7icon3.png";
+  width: 110px;
+  height: 104px;
 }
 </style>

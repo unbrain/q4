@@ -32,3 +32,8 @@
 .upwrap {
   @mixin flexbox;
 }
+
+h2 {
+  font-size: 26px;
+  font-weight: bold;
+}

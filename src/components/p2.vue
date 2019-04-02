@@ -1,5 +1,6 @@
 <template>
   <div :class="$style.bg">
+    <div :class="$style.contain">
     <div :class="$style.title">
       月活跃用户净增长
       <span c-fff>6000万</span>
@@ -44,6 +45,7 @@
       </div>
     </div>
     <div :class="[$style.linet,$style.q4line]"></div>
+    </div>
     <div :class="$style.upwrap">
       <div :class="$style.up"></div>
     </div>
@@ -57,13 +59,19 @@ export default {};
 <style lang="postcss" module>
 @import "../base/gobal.css";
 .bg {
-  @mixin fullsize;
   @mixin bg "@/assets/bg2.png";
-  width: 532px;
-  padding: 75px 54px 0 54px;
+  @mixin fullsize;
+}
+.contain {
+  margin: 0 54px;
+  padding-top: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 .title {
   position: relative;
+  padding-left: 28px;
   font-size: 40px;
   line-height: 48px;
   font-weight: bold;
@@ -74,6 +82,7 @@ export default {};
   content: "";
   display: block;
   top: 50%;
+  left: 0;
   background-color: #ffec9e;
   width: 15px;
   height: 15px;

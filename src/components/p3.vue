@@ -29,8 +29,8 @@
               <!-- <div :class="[$style.w4,$style.wavewrap]">
                 <div :class="$style.wave"></div>
               </div>-->
-              <div :class="[$style.w4]" ref="wavewrap">
-                <canvas :class="$style.wave" ref="wave"></canvas>
+              <div :class="[$style.w4]">
+                <div :class="$style.wave"></div> 
               </div>
             </div>
           </div>
@@ -94,7 +94,7 @@ export default {
       let ctx = this.$refs.wave.getContext("2d");
       let radians = (Math.PI / 180) * 180;
       let startTime = Date.now();
-      let time = 2000;
+      let time = 600;
       let clockwise = 0;
       let cp1x, cp1y, cp2x, cp2y;
 
@@ -104,24 +104,24 @@ export default {
       // ctx.bezierCurveTo(145, 100, 41, 100, 200, 100);
       requestAnimationFrame(function waveDraw() {
         let t = Math.min(1.0, (Date.now() - startTime) / time);
-
-        if (clockwise) {
-          cp1x = 90 + 55 * t;
-          cp1y = -68 + 72 * t;
-          cp2x = 92 - 51 * t;
-          cp2y = 99 - 79 * t;
+        let mh = height*0.5;
+        if(clockwise) {
+            cp1x = 90 + (55 * t);
+            cp1y = 28 + ((mh-28) * t);
+            cp2x = 92 - (51 * t);
+            cp2y = 179 - ((179-(mh)) * t);
         } else {
-          cp1x = 145 - 55 * t;
-          cp1y = 20 - 72 * t;
-          cp2x = 41 + 51 * t;
-          cp2y = 20 + 79 * t;
+            cp1x = 145 - (55 * t);
+            cp1y = mh - ((mh-28) * t);
+            cp2x = 41 + (51 * t);
+            cp2y = mh + ((179-(mh)) * t);
         }
 
-        ctx.clearRect(0, 0, 200, 200);
+        ctx.clearRect(0, 0, width, height);
         ctx.beginPath();
-        ctx.moveTo(0, height);
+        ctx.moveTo(0, mh);
         // 绘制三次贝塞尔曲线
-        ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, width, height);
+        ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, width, mh);
         // 绘制圆弧
         ctx.arc(100, 100, 100, 0, radians, 0);
 
@@ -137,7 +137,7 @@ export default {
     }
   },
   mounted() {
-    this.initCanvas();
+    // this.initCanvas();
   }
 };
 </script>
@@ -229,21 +229,33 @@ export default {
 }
 .w4 {
   @mixin flexbox;
+  position: relative;
   width: 252px;
   height: 252px;
-  border-radius: 100%;
+  border-radius: 50%;
   border: 1px solid transparent;
   border-color: #ff8767;
-  /* animation: water 2s linear 0s infinite; */
+  background-image: linear-gradient(90deg, #FF5F4B 0%, #FFDB68 100%);
+  overflow: hidden;
 }
 .wave {
-  border-radius: 50%;
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top:-150%;
+  border-radius: 35%;
+  background: rgba(255, 255, 255, .4);
+  animation: wave 2s infinite linear;
 }
 .wavewrap {
   width: 252px;
   height: 252px;
   border-radius: 50%;
   overflow: hidden;
+}
+@keyframes wave {
+  from { transform: rotate(0deg);}
+  from { transform: rotate(360deg);}
 }
 /* .wave {
   position: relative;

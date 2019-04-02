@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import p1 from "@/components/p8";
+import p1 from "@/components/p9";
 export default {
   name: "app",
   components: {

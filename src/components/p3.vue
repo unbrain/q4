@@ -29,8 +29,9 @@
               <!-- <div :class="[$style.w4,$style.wavewrap]">
                 <div :class="$style.wave"></div>
               </div>-->
-              <div :class="[$style.w4]">
-                <div :class="$style.wave"></div> 
+              <div :class="[$style.w4]" ref="wrap">
+                <div :class="$style.wave" ref="wave"></div>
+                <div :class="$style.wave1" ref="wave1"></div>
               </div>
             </div>
           </div>
@@ -44,100 +45,13 @@
 </template>
 
 <script>
+import { setTimeout } from "timers";
 export default {
-  methods: {
-    animate() {
-      var waveX = 0;
-      var waveY = 0;
-      var waveX_min = -203;
-      var waveY_max = canvasHeight * 0.9;
-      var requestAnimationFrame =
-        window.requestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        window.msRequestAnimationFrame ||
-        function(callback) {
-          window.setTimeout(callback, 1000 / 60);
-        };
-      function loop() {
-        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-        if (!needAnimate) return;
-        if (waveY < waveY_max) waveY += 1.5;
-        if (waveX < waveX_min) waveX = 0;
-        else waveX -= 3;
-
-        // ctx.globalCompositeOperation&nbsp;=&nbsp;'source-over';
-        ctx.beginPath();
-        ctx.arc(
-          canvasWidth / 2,
-          canvasHeight / 2,
-          canvasHeight / 2,
-          0,
-          Math.PI * 2,
-          true
-        );
-        ctx.closePath();
-        ctx.fill();
-
-        // ctx.globalCompositeOperation&nbsp;=&nbsp;'source-in';
-        ctx.drawImage(waveImage, waveX, canvasHeight - waveY);
-
-        requestAnimationFrame(loop);
-      }
-      loop();
-    },
-    initCanvas() {
-      let width = this.$refs.wavewrap.clientWidth;
-      let height = this.$refs.wavewrap.clientHeight;
-      this.$refs.wave.width = width;
-      this.$refs.wave.height = height;
-      let ctx = this.$refs.wave.getContext("2d");
-      let radians = (Math.PI / 180) * 180;
-      let startTime = Date.now();
-      let time = 600;
-      let clockwise = 0;
-      let cp1x, cp1y, cp2x, cp2y;
-
-      // 初始状态
-      // ctx.bezierCurveTo(90, 28, 92, 179, 200, 100);
-      // 末尾状态
-      // ctx.bezierCurveTo(145, 100, 41, 100, 200, 100);
-      requestAnimationFrame(function waveDraw() {
-        let t = Math.min(1.0, (Date.now() - startTime) / time);
-        let mh = height*0.5;
-        if(clockwise) {
-            cp1x = 90 + (55 * t);
-            cp1y = 28 + ((mh-28) * t);
-            cp2x = 92 - (51 * t);
-            cp2y = 179 - ((179-(mh)) * t);
-        } else {
-            cp1x = 145 - (55 * t);
-            cp1y = mh - ((mh-28) * t);
-            cp2x = 41 + (51 * t);
-            cp2y = mh + ((179-(mh)) * t);
-        }
-
-        ctx.clearRect(0, 0, width, height);
-        ctx.beginPath();
-        ctx.moveTo(0, mh);
-        // 绘制三次贝塞尔曲线
-        ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, width, mh);
-        // 绘制圆弧
-        ctx.arc(100, 100, 100, 0, radians, 0);
-
-        ctx.fillStyle = "rgba(255, 135, 103, .8)";
-        ctx.fill();
-        ctx.save();
-        if (t == 1) {
-          startTime = Date.now();
-          clockwise = !clockwise;
-        }
-        requestAnimationFrame(waveDraw);
-      });
-    }
-  },
   mounted() {
-    // this.initCanvas();
+    setTimeout(() => {
+      this.$refs.wave.style.animation = "wave 5s infinite linear";
+      this.$refs.wave1.style.animation = "wave 5s infinite linear";
+    }, 5000);
   }
 };
 </script>
@@ -211,6 +125,7 @@ export default {
   border-radius: 100%;
   animation: water 2s linear 1.5s infinite;
 }
+
 .w2 {
   @mixin flexbox;
   @mixin bg "@/assets/c2.png";
@@ -235,17 +150,27 @@ export default {
   border-radius: 50%;
   border: 1px solid transparent;
   border-color: #ff8767;
-  background-image: linear-gradient(90deg, #FF5F4B 0%, #FFDB68 100%);
+  background-image: linear-gradient(0deg, #ff5f4b 0%, #ffdb68 100%);
   overflow: hidden;
 }
 .wave {
   width: 200%;
   height: 200%;
   position: absolute;
-  top:-150%;
+  top: -180%;
   border-radius: 35%;
-  background: rgba(255, 255, 255, .4);
-  animation: wave 2s infinite linear;
+  background: rgba(255, 255, 255, 0.4);
+  animation: waveup 5s infinite linear;
+}
+.wave1 {
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: -180%;
+  left: -60%;
+  border-radius: 35%;
+  background: rgba(255, 255, 255, 0.5);
+  animation: waveup 5s infinite linear;
 }
 .wavewrap {
   width: 252px;
@@ -253,41 +178,16 @@ export default {
   border-radius: 50%;
   overflow: hidden;
 }
-@keyframes wave {
-  from { transform: rotate(0deg);}
-  from { transform: rotate(360deg);}
+@keyframes waveup {
+  from {
+    top: -100%;
+    transform: rotate(0deg);
+  }
+  to {
+    top: -180%;
+    transform: rotate(-360deg);
+  }
 }
-/* .wave {
-  position: relative;
-  width: 252px;
-  height: 252px;
-  background-color: #ffd065;
-  border-radius: 50%;
-  transform: rotate(25deg);
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    top: 0;
-    left: 50%;
-    background-color: rgba(255, 181, 106, 0.8);
-    border-radius: 45%;
-    transform: translate(-80%, -80%) rotate(0);
-    animation: rotate 6s linear infinite;
-    z-index: 10;
-  }
-
-  &::after {
-    border-radius: 47%;
-    background-color: transparent;
-    transform: translate(-80%, -80%) rotate(0);
-    animation: rotate 10s linear -5s infinite;
-    z-index: 20;
-  }
-} */
 
 @keyframes rotate {
   50% {
@@ -297,6 +197,7 @@ export default {
     transform: translate(-80%, -80%) rotate(360deg);
   }
 }
+
 @keyframes water {
   0% {
     border-color: #ff8040;

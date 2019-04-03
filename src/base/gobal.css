@@ -1,4 +1,5 @@
 @import './mixins.css';
+@import './annimation.css';
 
 [c-fff] {
   color: #fff !important;
@@ -27,6 +28,7 @@
   bottom: 40px;
   width: 14px;
   height: 15px;
+  animation: upaction 1s ease infinite;
 }
 
 .upwrap {

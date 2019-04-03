@@ -30,17 +30,21 @@ export default {};
   position: absolute;
   width: 498px;
   height: 858px;
-  left: -26px;
+  left: -30px;
   top: 305px;
+  animation: bamboo 10s ease 0s forwards infinite;
+  transform-origin: bottom right;
 }
 .right {
   @mixin bg "@/assets/p1right.png";
   z-index: -1;
   position: absolute;
-  width: 696px;
-  height: 1201px;
-  left: -15px;
+  width: 640px;
+  height: 953px;
+  right: -30px;
   top: 75px;
+  animation: bamboo 10s ease 0s reverse infinite;
+  transform-origin: bottom left;
 }
 .wrap {
   @mixin flexbox;
@@ -49,18 +53,24 @@ export default {};
 }
 .titleimg {
   @mixin bg "@/assets/title.png";
+  opacity: 0;
   width: 300px;
   height: 640px;
+  animation: fadein ease 1s forwards;
 }
 .title {
   margin-top: 45px;
   font-size: 32px;
   color: #fff;
+  animation: slideup 0.5s ease 1s forwards;
+  transform: translateY(50vh);
 }
 .weibo {
   @mixin bg "@/assets/weibo.png";
   margin-top: 60px;
   width: 162px;
   height: 55px;
+  animation: slideup 0.5s ease 1.5s forwards;
+  transform: translateY(30vh);
 }
 </style>

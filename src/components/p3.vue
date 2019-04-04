@@ -9,9 +9,18 @@
               <!-- <div :class="[$style.w4,$style.wavewrap]">
                 <div :class="$style.wave"></div>
               </div>-->
-              <div :class="[$style.w4]" ref="wrap">
-                <div :class="$style.wave" ref="wave"></div>
-                <div :class="$style.wave1" ref="wave1"></div>
+              <div
+                :class="[$style.w4]"
+                ref="wrap"
+              >
+                <div
+                  :class="$style.wave"
+                  ref="wave"
+                ></div>
+                <div
+                  :class="$style.wave1"
+                  ref="wave1"
+                ></div>
               </div>
             </div>
           </div>
@@ -24,23 +33,36 @@
 <script>
 import top from '@/components/top';
 export default {
+  props: {
+    isShow: {
+      required: true,
+    }
+  },
   components: {
     top
   },
-  data(){
+  data() {
     return {
       topDetails: {
         title: ['日活跃用户达', '1.06亿'],
-        description: [['全年净增长', '2000万'], ['Q4移动日活用户达', '9400万'], ['同比增长','46%']],
+        description: [['全年净增长', '2000万'], ['Q4移动日活用户达', '9400万'], ['同比增长', '46%']],
         chartTitle: '月活跃用户增长趋势 （亿）',
-      }
+      },
+      timer: ''
     }
   },
-  mounted() {
-    setTimeout(() => {
-      this.$refs.wave.style.animation = "wave 5s infinite linear";
-      this.$refs.wave1.style.animation = "wave 5s infinite linear";
-    }, 5000);
+  watch: {
+    isShow(v) {
+      if (v) {
+        window.clearTimeout(this.timer);
+        this.$refs.wave.style.animation = "waveup 5s 1 linear";
+        this.$refs.wave1.style.animation = "waveup 5s 1 linear";
+        this.timer = setTimeout(() => {
+          this.$refs.wave.style.animation = "wave 5s infinite linear";
+          this.$refs.wave1.style.animation = "wave 5s infinite linear";
+        }, 5000);
+      }
+    }
   }
 };
 </script>
@@ -107,7 +129,7 @@ export default {
   top: -180%;
   border-radius: 35%;
   background: rgba(255, 255, 255, 0.4);
-  animation: waveup 5s infinite linear;
+  animation: waveup 5s 1 linear;
 }
 .wave1 {
   width: 200%;
@@ -117,7 +139,7 @@ export default {
   left: -60%;
   border-radius: 35%;
   background: rgba(255, 255, 255, 0.5);
-  animation: waveup 5s infinite linear;
+  animation: waveup 5s 1 linear;
 }
 .wavewrap {
   width: 252px;

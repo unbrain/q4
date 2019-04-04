@@ -27,6 +27,7 @@
           class="pp"
           key="3"
           v-show="pshows[2]"
+          :is-show="pshows[2]"
         ></p3>
         <p4
           class="pp"
@@ -61,7 +62,10 @@
       </transition-group>
     </div>
     <div class="upwrap">
-      <div class="up"></div>
+      <div
+        class="up"
+        @click="listup"
+      ></div>
     </div>
   </div>
 </template>
@@ -153,6 +157,14 @@ export default {
         }
         this.count = this.count <= 0 ? 0 : this.count - 1;
       }
+    },
+    listup() {
+      console.log(0)
+        this.listName = 'listdown'
+        if (this.count < this.pshows.length - 1) {
+          this.pshows = (this.pshows.slice(-1).concat(this.pshows.slice(0, -1)))
+        }
+        this.count = this.count >= this.pshows.length - 1 ? this.pshows.length - 1 : this.count + 1;
     }
   },
   computed: {
@@ -166,7 +178,7 @@ export default {
 </script>
 
 <style>
-@import './base/gobal.css';
+@import "./base/gobal.css";
 #app {
   height: 100vh;
   width: 100vw;

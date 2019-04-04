@@ -1,5 +1,5 @@
 @import './mixins.css';
-@import './annimation.css';
+@import './animation.css';
 
 [c-fff] {
   color: #fff !important;

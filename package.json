@@ -57,7 +57,9 @@
           ".ignore",
           ".hairlines"
         ],
-        "propList": ["*"]
+        "propList": [
+          "*"
+        ]
       }
     },
     "browserslist": [

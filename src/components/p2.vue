@@ -1,50 +1,50 @@
 <template>
   <div :class="$style.bg">
     <div :class="$style.contain">
-    <div :class="$style.title">
-      月活跃用户净增长
-      <span c-fff>6000万</span>
-    </div>
-    <div :class="$style.linef"></div>
-    <div :class="$style.decription">
-      <p>
-        年对年增长率达
-        <span c-fff>34%</span>
-      </p>
-      <p>
-        用户刷新微博的互动率提升
-        <span c-fff>24%</span>
-      </p>
-    </div>
-    <div :class="$style.lines"></div>
-    <div :class="$style.chart">
-      <div :class="$style.charttitle">月活跃用户增长趋势 （亿）</div>
-      <div :class="[$style.q4, $style.chartstyle]" c-fff>
-        <div :class="$style.detail">
-          <div>2015 Q4</div>
-          <div :class="[$style.dashline]"></div>
+      <div :class="$style.title">
+        月活跃用户净增长
+        <span c-fff>6000万</span>
+      </div>
+      <div :class="$style.linef"></div>
+      <div :class="$style.decription">
+        <p>
+          年对年增长率达
+          <span c-fff>34%</span>
+        </p>
+        <p>
+          用户刷新微博的互动率提升
+          <span c-fff>24%</span>
+        </p>
+      </div>
+      <div :class="$style.lines"></div>
+      <div :class="$style.chart">
+        <div :class="$style.charttitle">月活跃用户增长趋势 （亿）</div>
+        <div :class="[$style.q4, $style.chartstyle]" c-fff>
+          <div :class="$style.detail">
+            <div>2015 Q4</div>
+            <div :class="[$style.dashline]"></div>
+          </div>
+        </div>
+        <div :class="[$style.q3, $style.chartstyle]">
+          <div :class="$style.detail">
+            <div>2015 Q3</div>
+            <div :class="[$style.dashline,$style.q3line]"></div>
+          </div>
+        </div>
+        <div :class="[$style.q2, $style.chartstyle]">
+          <div :class="$style.detail">
+            <div>2015 Q2</div>
+            <div :class="[$style.dashline,$style.q2line]"></div>
+          </div>
+        </div>
+        <div :class="[$style.q1, $style.chartstyle]">
+          <div :class="$style.detail">
+            <div>2015 Q1</div>
+            <div :class="[$style.dashline,$style.q1line]"></div>
+          </div>
         </div>
       </div>
-      <div :class="[$style.q3, $style.chartstyle]">
-        <div :class="$style.detail">
-          <div>2015 Q3</div>
-          <div :class="[$style.dashline,$style.q3line]"></div>
-        </div>
-      </div>
-      <div :class="[$style.q2, $style.chartstyle]">
-        <div :class="$style.detail">
-          <div>2015 Q2</div>
-          <div :class="[$style.dashline,$style.q2line]"></div>
-        </div>
-      </div>
-      <div :class="[$style.q1, $style.chartstyle]">
-        <div :class="$style.detail">
-          <div>2015 Q1</div>
-          <div :class="[$style.dashline,$style.q1line]"></div>
-        </div>
-      </div>
-    </div>
-    <div :class="[$style.linet,$style.q4line]"></div>
+      <div :class="[$style.linet,$style.q4line]"></div>
     </div>
     <div :class="$style.upwrap">
       <div :class="$style.up"></div>
@@ -61,6 +61,9 @@ export default {};
 .bg {
   @mixin bg "@/assets/bg2.png";
   @mixin fullsize;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 .contain {
   margin: 0 54px;

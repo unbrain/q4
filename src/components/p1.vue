@@ -23,6 +23,7 @@ export default {};
   position: relative;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 .left {
   @mixin bg "@/assets/p1left.png";
@@ -63,7 +64,7 @@ export default {};
   font-size: 32px;
   color: #fff;
   animation: slideup 0.5s ease 1s forwards;
-  transform: translateY(50vh);
+  opacity: 0;
 }
 .weibo {
   @mixin bg "@/assets/weibo.png";
@@ -71,6 +72,6 @@ export default {};
   width: 162px;
   height: 55px;
   animation: slideup 0.5s ease 1.5s forwards;
-  transform: translateY(30vh);
+  opacity: 0;
 }
 </style>

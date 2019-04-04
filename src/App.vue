@@ -28,29 +28,71 @@
           key="3"
           v-show="pshows[2]"
         ></p3>
+        <p4
+          class="pp"
+          key="4"
+          v-show="pshows[3]"
+        ></p4>
+        <p5
+          class="pp"
+          key="5"
+          v-show="pshows[4]"
+        ></p5>
+        <p6
+          class="pp"
+          key="6"
+          v-show="pshows[5]"
+        ></p6>
+        <p7
+          class="pp"
+          key="7"
+          v-show="pshows[6]"
+        ></p7>
+        <p8
+          class="pp"
+          key="8"
+          v-show="pshows[7]"
+        ></p8>
+        <p9
+          class="pp"
+          key="9"
+          v-show="pshows[8]"
+        ></p9>
       </transition-group>
     </div>
+    <div class="upwrap">
+      <div class="up"></div>
+    </div>
   </div>
-
 </template>
 
 <script>
 import p1 from "@/components/p1";
 import p2 from "@/components/p2";
 import p3 from "@/components/p3";
-import { setTimeout } from 'timers';
-import { truncate } from 'fs';
+import p4 from "@/components/p4";
+import p5 from "@/components/p5";
+import p6 from "@/components/p6";
+import p7 from "@/components/p7";
+import p8 from "@/components/p8";
+import p9 from "@/components/p9";
 
 export default {
   name: "app",
   components: {
     p1,
     p2,
-    p3
+    p3,
+    p4,
+    p5,
+    p6,
+    p7,
+    p8,
+    p9
   },
   data() {
     return {
-      pshows: [true, false, false],
+      pshows: [true, false, false, false, false, false, false, false, false, false],
       distance: 0,
       count: 0,
       listName: '',
@@ -124,6 +166,7 @@ export default {
 </script>
 
 <style>
+@import './base/gobal.css';
 #app {
   height: 100vh;
   width: 100vw;
@@ -132,8 +175,21 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  background-image: url('./assets/bg.png');
-  background-size: cover; 
+  background-image: url("./assets/bg.png");
+  background-size: cover;
+}
+.up {
+  background-image: url("./assets/up.png");
+  background-size: cover;
+  position: absolute;
+  bottom: 40px;
+  width: 14px;
+  height: 15px;
+  animation: upaction 1s ease infinite;
+}
+
+.upwrap {
+  @mixin flexbox;
 }
 .pp {
   height: 100vh;
@@ -147,7 +203,6 @@ export default {
   from {
     transform: rotate(0deg);
   }
-
   from {
     transform: rotate(360deg);
   }

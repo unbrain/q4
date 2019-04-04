@@ -1,31 +1,7 @@
 <template>
   <div :class="$style.bg">
     <div :class="$style.contain">
-      <div :class="$style.title">
-        广告客户数量突破
-        <span c-fff>53万</span>
-      </div>
-      <div :class="$style.linef"></div>
-      <div :class="$style.decription">
-        <p>
-          品牌客户收入同比增长
-          <span c-fff>XX%</span>
-        </p>
-        <p>
-          非阿里收入同比增长
-          <span c-fff>70%</span>
-        </p>
-        <p>
-          中小及自助广告收入同比增长
-          <span c-fff>XXX%</span>
-        </p>
-        <p>
-          客户数环比净增
-          <span c-fff>4.2万个</span>
-        </p>
-      </div>
-      <div :class="$style.lines"></div>
-      <div :class="$style.charttitle">中小及自助广告客户数 （万）</div>
+      <top :top-details="topDetails"></top>
       <div :class="$style.chart">
         <div :class="$style.chartline"></div>
         <div :class="$style.chartdetail">
@@ -68,14 +44,29 @@
         </div>
       </div>
     </div>
-    <div :class="$style.upwrap">
-      <div :class="$style.up"></div>
-    </div>
   </div>
 </template>
 
 <script>
-export default {};
+import top from '@/components/top';
+export default {
+  components: {
+    top
+  },
+  data() {
+    return {
+      topDetails: {
+        title: ['广告客户数量突破', '53万'],
+        description: [
+          ['品牌客户收入同比增长', 'XX%'],
+          ['非阿里收入同比增长', '70%'],
+          ['中小及自助广告收入同比增长', 'XXX%'],
+          ['客户数环比净增', '4.2万个']],
+        chartTitle: '中小及自助广告客户数 （万）',
+      }
+    }
+  }
+};
 </script>
 
 <style lang="postcss" module>

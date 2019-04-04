@@ -1,25 +1,12 @@
 <template>
   <div :class="$style.bg">
     <div :class="$style.contain">
-      <div :class="$style.title">
-        月活跃用户净增长
-        <span c-fff>6000万</span>
-      </div>
-      <div :class="$style.linef"></div>
-      <div :class="$style.decription">
-        <p>
-          年对年增长率达
-          <span c-fff>34%</span>
-        </p>
-        <p>
-          用户刷新微博的互动率提升
-          <span c-fff>24%</span>
-        </p>
-      </div>
-      <div :class="$style.lines"></div>
+      <top :top-details="topDetails"></top>
       <div :class="$style.chart">
-        <div :class="$style.charttitle">月活跃用户增长趋势 （亿）</div>
-        <div :class="[$style.q4, $style.chartstyle]" c-fff>
+        <div
+          :class="[$style.q4, $style.chartstyle]"
+          c-fff
+        >
           <div :class="$style.detail">
             <div>2015 Q4</div>
             <div :class="[$style.dashline]"></div>
@@ -46,14 +33,25 @@
       </div>
       <div :class="[$style.linet,$style.q4line]"></div>
     </div>
-    <div :class="$style.upwrap">
-      <div :class="$style.up"></div>
-    </div>
   </div>
 </template>
 
 <script>
-export default {};
+import top from '@/components/top';
+export default {
+  components: {
+    top
+  },
+  data(){
+    return {
+      topDetails: {
+        title: ['月活跃用户净增长', '6000万'],
+        description: [['年对年增长率达', '34%'], ['用户刷新微博的互动率提升', '24%']],
+        chartTitle: '月活跃用户增长趋势 （亿）',
+      }
+    }
+  }
+};
 </script>
 
 <style lang="postcss" module>
@@ -72,47 +70,10 @@ export default {};
   flex-direction: column;
   justify-content: flex-start;
 }
-.title {
-  position: relative;
-  padding-left: 28px;
-  font-size: 40px;
-  line-height: 48px;
-  font-weight: bold;
-  color: #ffec9e;
-}
-.title:before {
-  position: absolute;
-  content: "";
-  display: block;
-  top: 50%;
-  left: 0;
-  background-color: #ffec9e;
-  width: 15px;
-  height: 15px;
-  border-radius: 100%;
-  transform: translateY(-50%);
-}
-.linef {
-  @mixin line;
-}
-.lines {
-  @mixin line;
-}
+
 .linet {
   @mixin line;
   position: relative;
-}
-.decription {
-  padding-left: 40px;
-  text-align: left;
-  color: #ffe599;
-  font-size: 24px;
-}
-.charttitle {
-  padding-left: 40px;
-  text-align: left;
-  color: #ffe599;
-  font-size: 20px;
 }
 .chart {
   font-size: 18px;

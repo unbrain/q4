@@ -1,27 +1,7 @@
 <template>
   <div :class="$style.bg">
     <div :class="$style.contain">
-      <div :class="$style.title">
-        全年总营收
-        <span c-fff>4.816亿美元</span>
-      </div>
-      <div :class="$style.linef"></div>
-      <div :class="$style.decription">
-        <p>
-          年对年增长
-          <span c-fff>44%</span>
-        </p>
-        <p>
-          广告收入
-          <span c-fff>4.063亿美元</span>
-        </p>
-        <p>
-          年对年增长
-          <span c-fff>53%</span>
-        </p>
-      </div>
-      <div :class="$style.lines"></div>
-      <div :class="$style.charttitle">总营收增长趋势 （万美元）</div>
+      <top :top-details="topDetails"></top>
       <div :class="$style.chart">
         <div :class="$style.chartdetail">
           <div>
@@ -40,7 +20,10 @@
             <div :class="$style.quarter">2015Q3</div>
           </div>
           <div>
-            <div :class="$style.num" c-fff>15280</div>
+            <div
+              :class="$style.num"
+              c-fff
+            >15280</div>
             <div :class="[$style.q4, $style.q]"></div>
             <div :class="$style.quarter">2015Q4</div>
           </div>
@@ -52,14 +35,25 @@
         <div :class="[$style.dashline,$style.dashline4]"></div>
       </div>
     </div>
-    <div :class="$style.upwrap">
-      <div :class="$style.up"></div>
-    </div>
   </div>
 </template>
 
 <script>
-export default {};
+import top from '@/components/top';
+export default {
+  components: {
+    top
+  },
+  data() {
+    return {
+      topDetails: {
+        title: ['全年总营收', '4.816亿美元'],
+        description: [['年对年增长', '44%'], ['广告收入', '4.063亿美元'], ['年对年增长', '53%']],
+        chartTitle: '总营收增长趋势 （万美元）',
+      }
+    }
+  }
+};
 </script>
 
 <style lang="postcss" module>

@@ -1,27 +1,7 @@
 <template>
   <div :class="$style.bg">
     <div :class="$style.contain">
-      <div :class="$style.title">
-        日活跃用户达
-        <span c-fff>1.06亿</span>
-      </div>
-      <div :class="$style.linef"></div>
-      <div :class="$style.decription">
-        <p>
-          全年净增长
-          <span c-fff>2000万</span>
-        </p>
-        <p>
-          Q4移动日活用户达
-          <span c-fff>9400万</span>
-        </p>
-        <p>
-          同比增长
-          <span c-fff>46%</span>
-        </p>
-      </div>
-      <div :class="$style.lines"></div>
-      <div :class="$style.charttitle">月活跃用户增长趋势 （亿）</div>
+      <top :top-details="topDetails"></top>
       <div :class="$style.chart">
         <div :class="$style.w1">
           <div :class="$style.w2">
@@ -38,15 +18,24 @@
         </div>
       </div>
     </div>
-    <div :class="$style.upwrap">
-      <div :class="$style.up"></div>
-    </div>
   </div>
 </template>
 
 <script>
-import { setTimeout } from "timers";
+import top from '@/components/top';
 export default {
+  components: {
+    top
+  },
+  data(){
+    return {
+      topDetails: {
+        title: ['日活跃用户达', '1.06亿'],
+        description: [['全年净增长', '2000万'], ['Q4移动日活用户达', '9400万'], ['同比增长','46%']],
+        chartTitle: '月活跃用户增长趋势 （亿）',
+      }
+    }
+  },
   mounted() {
     setTimeout(() => {
       this.$refs.wave.style.animation = "wave 5s infinite linear";
@@ -68,48 +57,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-}
-.title {
-  position: relative;
-  padding-left: 28px;
-  font-size: 40px;
-  line-height: 48px;
-  font-weight: bold;
-  color: #ffec9e;
-}
-.title:before {
-  position: absolute;
-  content: "";
-  display: block;
-  top: 50%;
-  left: 0;
-  background-color: #ffec9e;
-  width: 15px;
-  height: 15px;
-  border-radius: 100%;
-  transform: translateY(-50%);
-}
-.linef {
-  @mixin line;
-}
-.lines {
-  @mixin line;
-}
-.linet {
-  @mixin line;
-  position: relative;
-}
-.decription {
-  padding-left: 40px;
-  text-align: left;
-  color: #ffe599;
-  font-size: 24px;
-}
-.charttitle {
-  padding-left: 40px;
-  text-align: left;
-  color: #ffe599;
-  font-size: 20px;
 }
 .chart {
   font-size: 18px;

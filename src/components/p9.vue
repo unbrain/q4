@@ -35,9 +35,6 @@
         <div :class="$style.icon2"></div>
       </div>
     </div>
-    <div :class="$style.upwrap">
-      <div :class="$style.up"></div>
-    </div>
   </div>
 </template>
 

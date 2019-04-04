@@ -6,7 +6,6 @@
       <div :class="$style.titleimg"></div>
       <h1 :class="$style.title">微博2015Q4及全年财报</h1>
       <div :class="$style.weibo"></div>
-      <div :class="$style.up"></div>
     </div>
   </div>
 </template>
@@ -71,7 +70,7 @@ export default {};
   margin-top: 60px;
   width: 162px;
   height: 55px;
-  animation: slideup 0.5s ease 1.5s forwards;
+  animation: slideup 1s ease 1.5s forwards;
   opacity: 0;
 }
 </style>

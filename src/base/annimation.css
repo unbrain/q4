@@ -59,11 +59,46 @@
 
 @keyframes slideup {
   0% {
+    transform: translateY(1000%);
     opacity: 0;
   }
 
   100% {
     transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes leftin {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes titlenumin {
+  0% {
+    transform: translateY(30%) scale(0);
+    opacity: 0;
+  }
+
+  33% {
+    transform: translateY(-30%) scale(1.5);
+    opacity: 1;
+  }
+
+  66% {
+    transform: translateY(0) scale(.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
 }

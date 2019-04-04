@@ -17,22 +17,8 @@
 }
 
 @define-mixin line {
-  margin: 40px 0;
   border-bottom: 1px solid transparent;
   border-image: svg(1px-border param(--color #ffce65)) 1 stretch;
-}
-
-.up {
-  @mixin bg "@/assets/up.png";
-  position: absolute;
-  bottom: 40px;
-  width: 14px;
-  height: 15px;
-  animation: upaction 1s ease infinite;
-}
-
-.upwrap {
-  @mixin flexbox;
 }
 
 h2 {

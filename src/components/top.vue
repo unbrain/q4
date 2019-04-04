@@ -1,0 +1,116 @@
+<template>
+  <div>
+    <div :class="$style.titlewrap">
+      <div :class="$style.title">
+        <span v-text="topDetails.title[0]"></span>
+        <span
+          c-fff
+          v-text="topDetails.title[1]"
+          :class="$style.titlenum"
+        ></span>
+      </div>
+    </div>
+    <div :class="$style.description">
+      <p
+        v-for="(item, index) in topDetails.description"
+        :key="index"
+      >
+        <span v-text="item[0]"></span>
+        <span
+          c-fff
+          v-text="item[1]"
+        ></span>
+      </p>
+    </div>
+    <div
+      :class="$style.charttitle"
+      v-text="topDetails.chartTitle"
+    ></div>
+  </div>
+
+</template>
+
+<script>
+export default {
+  props: {
+    topDetails: {
+      type: Object,
+      required: true
+    }
+  },
+  data() {
+    return {
+    }
+  }
+}
+</script>
+
+<style lang="postcss" module>
+@import "../base/gobal.css";
+.bg {
+  @mixin bg "@/assets/bg2.png";
+  @mixin fullsize;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.contain {
+  margin: 0 54px;
+  padding-top: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.titlewrap {
+  @mixin line;
+  padding-bottom: 40px;
+  animation: leftin 1s ease 1s forwards;
+  opacity: 0;
+}
+.title {
+  position: relative;
+  padding-left: 28px;
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: bold;
+  color: #ffec9e;
+}
+.titlenum {
+  display: inline-block;
+  animation: titlenumin 1s ease 2s forwards;
+}
+.title:before {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 50%;
+  left: 0;
+  background-color: #ffec9e;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  transform: translateY(-50%);
+}
+.description {
+  @mixin line;
+  padding: 32px 0 32px 40px;
+  text-align: left;
+  color: #ffe599;
+  font-size: 24px;
+  animation: leftin 1s ease 3s forwards;
+  opacity: 0;
+  & p > span:nth-child(1) {
+    display: inline-block;
+    margin-right: 12px;
+  }
+}
+.charttitle {
+  margin-top: 32px;
+  padding-left: 40px;
+  text-align: left;
+  color: #ffe599;
+  font-size: 20px;
+  animation: leftin 1s ease 4s forwards;
+  opacity: 0;
+}
+</style>

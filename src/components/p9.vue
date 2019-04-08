@@ -4,9 +4,12 @@
       <div :class="$style.hua1"></div>
       <div :class="$style.hua2"></div>
       <div :class="$style.hua3"></div>
-      <div :class="$style.title">深化台网联动创跨年峰值新高</div>
-      <div :class="$style.linef"></div>
-      <div :class="$style.p9wrap">
+      <div :class="$style.titlewrap">
+        <div :class="$style.title">
+          <span>深化台网联动创跨年峰值新高</span>
+        </div>
+      </div>
+      <div :class="[$style.p9wrap,$style.w1]">
         <div :class="$style.icon1"></div>
         <div>
           <p>除夕</p>
@@ -20,7 +23,7 @@
           </p>
         </div>
       </div>
-      <div :class="$style.p9wrap">
+      <div :class="[$style.p9wrap,$style.w2]">
         <div>
           <p>春晚</p>
           <p>
@@ -57,27 +60,8 @@ export default {};
   justify-content: flex-start;
 }
 .title {
-  position: relative;
-  padding-left: 28px;
   font-size: 38px;
   line-height: 48px;
-  font-weight: bold;
-  color: #ffec9e;
-}
-.title:before {
-  position: absolute;
-  content: "";
-  display: block;
-  top: 50%;
-  left: 0;
-  background-color: #ffec9e;
-  width: 15px;
-  height: 15px;
-  border-radius: 100%;
-  transform: translateY(-50%);
-}
-.linef {
-  @mixin line;
 }
 .lines {
   @mixin line;
@@ -99,8 +83,14 @@ export default {};
   font-size: 24px;
   margin-top: 45px;
   margin-bottom: 100px;
+  opacity: 0;
 }
-
+.w1 {
+  animation: leftin 1s ease 2s forwards;
+}
+.w2 {
+  animation: leftin 1s ease 3s forwards;
+}
 .dashline {
   margin-left: 30px;
   width: 450px;
@@ -110,11 +100,15 @@ export default {};
   @mixin bg "@/assets/p9icon1.png";
   width: 186px;
   height: 250px;
+  opacity: 0;
+  animation: slideup 1s ease 4s forwards;
 }
 .icon2 {
   @mixin bg "@/assets/p9icon2.png";
   width: 230px;
   height: 207px;
+  opacity: 0;
+  animation: slideup 1s ease 5s forwards;
 }
 .hua1 {
   @mixin bg "@/assets/p9hua1.png";
@@ -123,6 +117,8 @@ export default {};
   top: 160px;
   width: 198px;
   height: 185px;
+  opacity: 0;
+  animation: fireworks 1.5s linear 2s infinite;
 }
 .hua2 {
   @mixin bg "@/assets/p9hua2.png";
@@ -131,6 +127,8 @@ export default {};
   top: 490px;
   width: 205px;
   height: 210px;
+  opacity: 0;
+  animation: fireworks 1.5s linear 2.5s infinite;
 }
 .hua3 {
   @mixin bg "@/assets/p9hua3.png";
@@ -139,5 +137,7 @@ export default {};
   left: 310px;
   width: 245px;
   height: 247px;
+  opacity: 0;
+  animation: fireworks 1.5s linear 3s infinite;
 }
 </style>

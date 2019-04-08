@@ -36,7 +36,7 @@
   }
 }
 
-@keyframes fadein {
+@keyframes zoomInOut {
   0% {
     transform: scale(0, 0) translateZ(0);
     opacity: 0;
@@ -100,5 +100,160 @@
   100% {
     transform: translateY(0) scale(1);
     opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes p2growup {
+  0% {
+    transform: scaleY(0) translateZ(0);
+    transform-origin: 0 bottom;
+    opacity: 0;
+  }
+
+  100% {
+    transform: scaleY(1) translateZ(0);
+    transform-origin: 0 bottom;
+    opacity: 1;
+  }
+}
+
+
+@keyframes p4growup {
+  0% {
+    transform: scale(1, 0);
+    transform-origin: 0 bottom;
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1, 1);
+    transform-origin: 0 bottom;
+    opacity: 1;
+  }
+}
+
+@keyframes dropdown {
+  0% {
+    transform: translateY(-20vw);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes p5growup {
+  0% {
+    transform: scale(0);
+    transform-origin: center bottom;
+    opacity: 0;
+  }
+
+  100% {
+    transform: scaleY(1);
+    transform-origin: center bottom;
+    opacity: 1;
+  }
+}
+
+@keyframes p6growup {
+  0% {
+    transform: translateX(10vw);
+  }
+
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes rotatebig {
+  0% {
+    transform: scale(0, 0) translateZ(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  25% {
+    transform: scale(1.1, 1.1) translateZ(0) rotate(10deg);
+  }
+
+  50% {
+    transform: scale(0.9, 0.9) translateZ(0) rotate(0deg);
+  }
+
+  75% {
+    transform: scale(1.1, 1.1) translateZ(0) rotate(-10deg);
+  }
+
+  100% {
+    transform: scale(1, 1) translateZ(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes waveup {
+  from {
+    top: -100%;
+    transform: rotate(0deg);
+  }
+
+  to {
+    top: -180%;
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes rotate {
+  50% {
+    transform: translate(-83%, -77%) rotate(180deg);
+  }
+
+  100% {
+    transform: translate(-80%, -80%) rotate(360deg);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.7);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes fireworks {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  60% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  80% {
+    transform: scale(1.5);
+    opacity: .2;
+  }
+
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
   }
 }

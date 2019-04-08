@@ -1,71 +1,20 @@
 <template>
-  <div
-    id="app"
-    @mousewheel="wheel"
-    @touchstart="start"
-    @touchmove="move"
-    @touchend="leave"
-  >
+  <div id="app" @mousewheel="wheel" @touchstart="start" @touchmove="move" @touchend="leave">
     <div :style="change">
-      <transition-group
-        :name="listName"
-        class="move"
-        ref="tg"
-        tag="div"
-      >
-        <p1
-          class="pp"
-          key="1"
-          v-show="pshows[0]"
-        ></p1>
-        <p2
-          class="pp"
-          key="2"
-          v-show="pshows[1]"
-        ></p2>
-        <p3
-          class="pp"
-          key="3"
-          v-show="pshows[2]"
-          :is-show="pshows[2]"
-        ></p3>
-        <p4
-          class="pp"
-          key="4"
-          v-show="pshows[3]"
-        ></p4>
-        <p5
-          class="pp"
-          key="5"
-          v-show="pshows[4]"
-        ></p5>
-        <p6
-          class="pp"
-          key="6"
-          v-show="pshows[5]"
-        ></p6>
-        <p7
-          class="pp"
-          key="7"
-          v-show="pshows[6]"
-        ></p7>
-        <p8
-          class="pp"
-          key="8"
-          v-show="pshows[7]"
-        ></p8>
-        <p9
-          class="pp"
-          key="9"
-          v-show="pshows[8]"
-        ></p9>
+      <transition-group :name="listName" class="move" ref="tg" tag="div">
+        <p1 class="pp" key="1" v-show="pshows[0]"></p1>
+        <p2 class="pp" key="2" v-show="pshows[1]"></p2>
+        <p3 class="pp" key="3" v-show="pshows[2]" :is-show="pshows[2]"></p3>
+        <p4 class="pp" key="4" v-show="pshows[3]"></p4>
+        <p5 class="pp" key="5" v-show="pshows[4]"></p5>
+        <p6 class="pp" key="6" v-show="pshows[5]"></p6>
+        <p7 class="pp" key="7" v-show="pshows[6]"></p7>
+        <p8 class="pp" key="8" v-show="pshows[7]"></p8>
+        <p9 class="pp" key="9" v-show="pshows[8]"></p9>
       </transition-group>
     </div>
     <div class="upwrap">
-      <div
-        class="up"
-        @click="listup"
-      ></div>
+      <div class="up" @click="listup"></div>
     </div>
   </div>
 </template>
@@ -96,10 +45,21 @@ export default {
   },
   data() {
     return {
-      pshows: [true, false, false, false, false, false, false, false, false, false],
+      pshows: [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
       distance: 0,
       count: 0,
-      listName: '',
+      listName: "",
       scrollActive: true,
       touchStart: false,
       startY: 0,
@@ -116,22 +76,26 @@ export default {
         }, 1000);
         let sd = e.wheelDelta || e.detail * -1;
         if (sd > 0) {
-          this.listName = 'listup'
+          this.listName = "listup";
           if (this.count > 0) {
-            this.pshows = (this.pshows.slice(1).concat(this.pshows.slice(0, 1)))
+            this.pshows = this.pshows.slice(1).concat(this.pshows.slice(0, 1));
           }
           this.count = this.count <= 0 ? 0 : this.count - 1;
         } else {
-          this.listName = 'listdown'
+          this.listName = "listdown";
           if (this.count < this.pshows.length - 1) {
-            this.pshows = (this.pshows.slice(-1).concat(this.pshows.slice(0, -1)))
+            this.pshows = this.pshows
+              .slice(-1)
+              .concat(this.pshows.slice(0, -1));
           }
-          this.count = this.count >= this.pshows.length - 1 ? this.pshows.length - 1 : this.count + 1;
+          this.count =
+            this.count >= this.pshows.length - 1
+              ? this.pshows.length - 1
+              : this.count + 1;
         }
       }
     },
-    changeDisplay(n) {
-    },
+    changeDisplay(n) {},
     start(e) {
       this.touchStart = true;
       this.startY = e.touches[0].clientY;
@@ -145,26 +109,32 @@ export default {
       this.touchStart = false;
       this.endY = e.changedTouches[0].clientY;
       if (this.endY - this.startY < 0) {
-        this.listName = 'listdown'
+        this.listName = "listdown";
         if (this.count < this.pshows.length - 1) {
-          this.pshows = (this.pshows.slice(-1).concat(this.pshows.slice(0, -1)))
+          this.pshows = this.pshows.slice(-1).concat(this.pshows.slice(0, -1));
         }
-        this.count = this.count >= this.pshows.length - 1 ? this.pshows.length - 1 : this.count + 1;
+        this.count =
+          this.count >= this.pshows.length - 1
+            ? this.pshows.length - 1
+            : this.count + 1;
       } else if (this.endY - this.startY > 0) {
-        this.listName = 'listup'
+        this.listName = "listup";
         if (this.count > 0) {
-          this.pshows = (this.pshows.slice(1).concat(this.pshows.slice(0, 1)))
+          this.pshows = this.pshows.slice(1).concat(this.pshows.slice(0, 1));
         }
         this.count = this.count <= 0 ? 0 : this.count - 1;
       }
     },
     listup() {
-      console.log(0)
-        this.listName = 'listdown'
-        if (this.count < this.pshows.length - 1) {
-          this.pshows = (this.pshows.slice(-1).concat(this.pshows.slice(0, -1)))
-        }
-        this.count = this.count >= this.pshows.length - 1 ? this.pshows.length - 1 : this.count + 1;
+      console.log(0);
+      this.listName = "listdown";
+      if (this.count < this.pshows.length - 1) {
+        this.pshows = this.pshows.slice(-1).concat(this.pshows.slice(0, -1));
+      }
+      this.count =
+        this.count >= this.pshows.length - 1
+          ? this.pshows.length - 1
+          : this.count + 1;
     }
   },
   computed: {

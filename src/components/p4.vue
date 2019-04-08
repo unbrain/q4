@@ -20,10 +20,7 @@
             <div :class="$style.quarter">2015Q3</div>
           </div>
           <div>
-            <div
-              :class="$style.num"
-              c-fff
-            >15280</div>
+            <div :class="$style.num" c-fff>15280</div>
             <div :class="[$style.q4, $style.q]"></div>
             <div :class="$style.quarter">2015Q4</div>
           </div>
@@ -39,7 +36,7 @@
 </template>
 
 <script>
-import top from '@/components/top';
+import top from "@/components/top";
 export default {
   components: {
     top
@@ -47,11 +44,15 @@ export default {
   data() {
     return {
       topDetails: {
-        title: ['全年总营收', '4.816亿美元'],
-        description: [['年对年增长', '44%'], ['广告收入', '4.063亿美元'], ['年对年增长', '53%']],
-        chartTitle: '总营收增长趋势 （万美元）',
+        title: ["全年总营收", "4.816亿美元"],
+        description: [
+          ["年对年增长", "44%"],
+          ["广告收入", "4.063亿美元"],
+          ["年对年增长", "53%"]
+        ],
+        chartTitle: "总营收增长趋势 （万美元）"
       }
-    }
+    };
   }
 };
 </script>
@@ -86,21 +87,10 @@ export default {
   background-color: #ffec9e;
   width: 15px;
   height: 15px;
-  border-radius: 100%;
+  border-radius: 50%;
   transform: translateY(-50%);
 }
-.linef {
-  @mixin line;
-}
-.lines {
-  @mixin line;
-}
-.baseline {
-  position: absolute;
-  bottom: 40px;
-  @mixin line;
-  margin: 0;
-}
+
 .decription {
   padding-left: 40px;
   text-align: left;
@@ -122,6 +112,8 @@ export default {
   & > div {
     width: 463px;
   }
+  opacity: 0;
+  animation: fadein 0.1s ease 5s forwards;
 }
 .chartdetail {
   z-index: 1;
@@ -133,11 +125,16 @@ export default {
     flex-direction: column;
     align-items: center;
   }
+  @for $i from 1 to 4 {
+    & > div:nth-child($i) > .num {
+      opacity: 0;
+      animation: dropdown 1s ease-in-out 6s forwards;
+    }
+  }
 }
 .q {
   position: relative;
   width: 40px;
-  height: 128px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   background-image: linear-gradient(
@@ -146,6 +143,7 @@ export default {
     #ffc772 20%,
     #ff8e2d 100%
   );
+  opacity: 0;
 }
 .num {
   margin-bottom: 28px;
@@ -157,28 +155,46 @@ export default {
   font-size: 20px;
   color: #ffec9e;
 }
+.q1 {
+  height: 128px;
+  animation: p4growup 1s ease 5s forwards;
+}
 .q2 {
   height: 175px;
+  animation: p4growup 1s ease 5.25s forwards;
 }
 .q3 {
   height: 241px;
+  animation: p4growup 1s ease 5.5s forwards;
 }
 .q4 {
   height: 341px;
+  animation: p4growup 1s ease 5.75s forwards;
 }
-
+.baseline {
+  position: absolute;
+  bottom: 40px;
+  @mixin line;
+  margin: 0;
+  opacity: 0;
+  animation: fadein 0.5s ease 5s forwards;
+}
 .dashline {
   position: absolute;
   border-bottom: 1px dashed #ff7e6c;
   bottom: 120px;
+  opacity: 0;
 }
 .dashline2 {
   bottom: 200px;
+  opacity: 0;
 }
 .dashline3 {
   bottom: 280px;
+  opacity: 0;
 }
 .dashline4 {
   bottom: 360px;
+  opacity: 0;
 }
 </style>

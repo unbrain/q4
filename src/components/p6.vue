@@ -1,9 +1,11 @@
 <template>
   <div :class="$style.bg">
     <div :class="$style.contain">
-      <top :top-details="topDetails"></top>
+      <top :top-details="topDetails" :class="$style.top"></top>
       <div :class="$style.chart">
-        <div :class="$style.chartline"></div>
+        <div :class="$style.chartline">
+          <div :class="$style.fake"></div>
+        </div>
         <div :class="$style.chartdetail">
           <div :class="$style.q">
             <div :class="$style.qnum">38.8</div>
@@ -48,7 +50,7 @@
 </template>
 
 <script>
-import top from '@/components/top';
+import top from "@/components/top";
 export default {
   components: {
     top
@@ -56,15 +58,16 @@ export default {
   data() {
     return {
       topDetails: {
-        title: ['广告客户数量突破', '53万'],
+        title: ["广告客户数量突破", "53万"],
         description: [
-          ['品牌客户收入同比增长', 'XX%'],
-          ['非阿里收入同比增长', '70%'],
-          ['中小及自助广告收入同比增长', 'XXX%'],
-          ['客户数环比净增', '4.2万个']],
-        chartTitle: '中小及自助广告客户数 （万）',
+          ["品牌客户收入同比增长", "XX%"],
+          ["非阿里收入同比增长", "70%"],
+          ["中小及自助广告收入同比增长", "XXX%"],
+          ["客户数环比净增", "4.2万个"]
+        ],
+        chartTitle: "中小及自助广告客户数 （万）"
       }
-    }
+    };
   }
 };
 </script>
@@ -74,6 +77,9 @@ export default {
 .bg {
   @mixin bg "@/assets/bg2.png";
   @mixin fullsize;
+}
+.top {
+  z-index: 11;
 }
 .contain {
   margin: 0 54px;
@@ -99,7 +105,7 @@ export default {
   background-color: #ffec9e;
   width: 15px;
   height: 15px;
-  border-radius: 100%;
+  border-radius: 50%;
   transform: translateY(-50%);
 }
 .linef {
@@ -137,25 +143,36 @@ export default {
   font-size: 20px;
 }
 .chartline {
-  z-index: 10;
   position: absolute;
   @mixin bg "@/assets/p6line.png";
   left: -20px;
   width: 483px;
   height: 341px;
 }
+.fake {
+  @mixin bg "@/assets/bg2.png";
+  display: inline-block;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  animation: p6growup 1.5s linear 5s forwards;
+}
 .chartdetail {
+  z-index: 100;
   height: 373px;
   display: flex;
   align-items: flex-end;
   justify-content: space-evenly;
 }
 .circle {
-  z-index: 100;
   @mixin bg "@/assets/p6Q.png";
   width: 26px;
   height: 26px;
   padding: 2px;
+  opacity: 0;
+  animation: dropdown 0.5s ease 7s forwards;
 }
 .c1 {
   margin-bottom: 95px;
@@ -168,6 +185,7 @@ export default {
 }
 .c4 {
   @mixin bg "@/assets/p6Q1.png";
+  padding: 4px;
   margin-bottom: 280px;
 }
 .q {
@@ -175,18 +193,26 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  & > div:nth-child(3) {
+    opacity: 0;
+    animation: fadein 0.5s ease 6.5s forwards;
+  }
 }
 .qnum {
   z-index: 10;
   margin-bottom: 14px;
   font-size: 28px;
   color: #fff;
+  opacity: 0;
+  animation: dropdown 0.5s ease 7s forwards;
 }
 .dash {
   display: flex;
   align-items: center;
   position: absolute;
   left: -40px;
+  opacity: 0;
+  animation: fadein 0.5s ease 6.5s forwards;
 }
 .d1 {
   bottom: 40px;

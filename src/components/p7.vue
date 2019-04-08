@@ -1,9 +1,12 @@
 <template>
   <div :class="$style.bg">
     <div :class="$style.contain">
-      <div :class="$style.title">多重政策刺激内容生产消费</div>
-      <div :class="$style.linef"></div>
-      <div :class="$style.decription">
+      <div :class="$style.titlewrap">
+        <div :class="$style.title">
+          <span>多重政策刺激内容生产消费</span>
+        </div>
+      </div>
+      <div :class="[$style.decription,$style.d1]">
         <div>
           <h2>扶持垂直领域</h2>
           <p>
@@ -17,8 +20,7 @@
         </div>
         <div :class="$style.icon1"></div>
       </div>
-      <div :class="$style.lines"></div>
-      <div :class="$style.decription">
+      <div :class="[$style.decription,$style.d2]">
         <div>
           <h2>加速多媒体化</h2>
           <p>
@@ -32,8 +34,7 @@
         </div>
         <div :class="$style.icon2"></div>
       </div>
-      <div :class="$style.lines"></div>
-      <div :class="$style.decription">
+      <div :class="[$style.decription,$style.d3]">
         <div>
           <h2>推出头条文章</h2>
           <p>
@@ -51,7 +52,6 @@
         </div>
         <div :class="$style.icon3"></div>
       </div>
-      <div :class="$style.lines"></div>
     </div>
   </div>
 </template>
@@ -73,32 +73,6 @@ export default {};
   flex-direction: column;
   justify-content: flex-start;
 }
-.title {
-  position: relative;
-  padding-left: 28px;
-  font-size: 40px;
-  line-height: 48px;
-  font-weight: bold;
-  color: #ffec9e;
-}
-.title:before {
-  position: absolute;
-  content: "";
-  display: block;
-  top: 50%;
-  left: 0;
-  background-color: #ffec9e;
-  width: 15px;
-  height: 15px;
-  border-radius: 100%;
-  transform: translateY(-50%);
-}
-.linef {
-  @mixin line;
-}
-.lines {
-  @mixin line;
-}
 .baseline {
   position: absolute;
   bottom: 40px;
@@ -109,10 +83,12 @@ export default {};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 40px;
+  padding: 20px 0 20px 40px;
   text-align: left;
   color: #ffe599;
   font-size: 24px;
+  @mixin line;
+  opacity: 0;
 }
 
 .dashline {
@@ -124,15 +100,30 @@ export default {};
   @mixin bg "@/assets/p7icon1.png";
   width: 175px;
   height: 151px;
+  opacity: 0;
+  animation: rotatebig 1s linear 2.5s forwards;
 }
 .icon2 {
   @mixin bg "@/assets/p7icon2.png";
   width: 131px;
   height: 105px;
+  opacity: 0;
+  animation: rotatebig 1s linear 3.5s forwards;
 }
 .icon3 {
   @mixin bg "@/assets/p7icon3.png";
   width: 110px;
   height: 104px;
+  opacity: 0;
+  animation: rotatebig 2s linear 4.5s forwards;
+}
+.d1 {
+  animation: leftin 0.5s linear 2s forwards;
+}
+.d2 {
+  animation: leftin 0.5s linear 3s forwards;
+}
+.d3 {
+  animation: leftin 0.5s linear 4s forwards;
 }
 </style>

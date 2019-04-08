@@ -1,9 +1,12 @@
 <template>
   <div :class="$style.bg">
     <div :class="$style.contain">
-      <div :class="$style.title">完善商业生态提升广告效果</div>
-      <div :class="$style.linef"></div>
-      <div :class="$style.decription">
+      <div :class="$style.titlewrap">
+        <div :class="$style.title">
+          <span>完善商业生态提升广告效果</span>
+        </div>
+      </div>
+      <div :class="[$style.decription,$style.d1]">
         <div>
           <h2>领跑社交广告市场</h2>
           <p>
@@ -21,8 +24,7 @@
         </div>
         <div :class="$style.icon1"></div>
       </div>
-      <div :class="$style.lines"></div>
-      <div :class="$style.decription">
+      <div :class="[$style.decription,$style.d2]">
         <div>
           <h2>增强对广告客户吸引力</h2>
           <p>
@@ -37,7 +39,6 @@
         </div>
         <div :class="$style.icon2"></div>
       </div>
-      <div :class="$style.lines"></div>
     </div>
   </div>
 </template>
@@ -76,14 +77,8 @@ export default {};
   background-color: #ffec9e;
   width: 15px;
   height: 15px;
-  border-radius: 100%;
+  border-radius: 50%;
   transform: translateY(-50%);
-}
-.linef {
-  @mixin line;
-}
-.lines {
-  @mixin line;
 }
 .baseline {
   position: absolute;
@@ -96,10 +91,12 @@ export default {};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 40px;
+  padding: 20px 0 20px 40px;
   text-align: left;
   color: #ffe599;
   font-size: 24px;
+  opacity: 0;
+  @mixin line;
 }
 
 .dashline {
@@ -113,10 +110,32 @@ export default {};
   @mixin bg "@/assets/p8icon1.png";
   width: 169px;
   height: 191px;
+  opacity: 0;
+  animation: rotatebig 1s linear 3s forwards;
+}
+.icon1::after {
+  position: absolute;
+  /* top: 32px;
+  left: 57px; */
+  content: "";
+  display: block;
+  width: 169px;
+  height: 191px;
+  @mixin bg "@/assets/p8.png";
+  opacity: 0;
+  transform-origin: 105px 75px;
+  animation: ripple 1s linear infinite 4s forwards;
 }
 .icon2 {
   @mixin bg "@/assets/p8icon2.png";
   width: 137px;
   height: 177px;
+  animation: rotatebig 1s linear 4s forwards;
+}
+.d1 {
+  animation: leftin 1s ease 2s forwards;
+}
+.d2 {
+  animation: leftin 1s ease 4s forwards;
 }
 </style>

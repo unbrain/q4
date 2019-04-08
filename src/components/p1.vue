@@ -4,7 +4,7 @@
     <div :class="$style.right"></div>
     <div :class="$style.wrap">
       <div :class="$style.titleimg"></div>
-      <h1 :class="$style.title">微博2015Q4及全年财报</h1>
+      <h1 :class="$style.keyword">微博2015Q4及全年财报</h1>
       <div :class="$style.weibo"></div>
     </div>
   </div>
@@ -56,9 +56,9 @@ export default {};
   opacity: 0;
   width: 300px;
   height: 640px;
-  animation: fadein ease 1s forwards;
+  animation: zoomInOut ease 1s forwards;
 }
-.title {
+.keyword {
   margin-top: 45px;
   font-size: 32px;
   color: #fff;
@@ -71,6 +71,7 @@ export default {};
   width: 162px;
   height: 55px;
   animation: slideup 1s ease 1.5s forwards;
+  background-size: 100%;
   opacity: 0;
 }
 </style>

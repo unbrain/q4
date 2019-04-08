@@ -3,31 +3,17 @@
     <div :class="$style.titlewrap">
       <div :class="$style.title">
         <span v-text="topDetails.title[0]"></span>
-        <span
-          c-fff
-          v-text="topDetails.title[1]"
-          :class="$style.titlenum"
-        ></span>
+        <span c-fff v-text="topDetails.title[1]" :class="$style.titlenum"></span>
       </div>
     </div>
     <div :class="$style.description">
-      <p
-        v-for="(item, index) in topDetails.description"
-        :key="index"
-      >
+      <p v-for="(item, index) in topDetails.description" :key="index">
         <span v-text="item[0]"></span>
-        <span
-          c-fff
-          v-text="item[1]"
-        ></span>
+        <span c-fff v-text="item[1]"></span>
       </p>
     </div>
-    <div
-      :class="$style.charttitle"
-      v-text="topDetails.chartTitle"
-    ></div>
+    <div :class="$style.charttitle" v-text="topDetails.chartTitle"></div>
   </div>
-
 </template>
 
 <script>
@@ -39,10 +25,9 @@ export default {
     }
   },
   data() {
-    return {
-    }
+    return {};
   }
-}
+};
 </script>
 
 <style lang="postcss" module>
@@ -61,36 +46,7 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
 }
-.titlewrap {
-  @mixin line;
-  padding-bottom: 40px;
-  animation: leftin 1s ease 1s forwards;
-  opacity: 0;
-}
-.title {
-  position: relative;
-  padding-left: 28px;
-  font-size: 40px;
-  line-height: 48px;
-  font-weight: bold;
-  color: #ffec9e;
-}
-.titlenum {
-  display: inline-block;
-  animation: titlenumin 1s ease 2s forwards;
-}
-.title:before {
-  position: absolute;
-  content: "";
-  display: block;
-  top: 50%;
-  left: 0;
-  background-color: #ffec9e;
-  width: 15px;
-  height: 15px;
-  border-radius: 100%;
-  transform: translateY(-50%);
-}
+
 .description {
   @mixin line;
   padding: 32px 0 32px 40px;

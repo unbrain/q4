@@ -86,7 +86,7 @@ export default {};
   opacity: 0;
 }
 .w1 {
-  animation: leftin 1s ease 2s forwards;
+  animation: rightin 1s ease 2s forwards;
 }
 .w2 {
   animation: leftin 1s ease 3s forwards;

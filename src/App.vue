@@ -2,7 +2,7 @@
   <div id="app" @mousewheel="wheel" @touchstart="start" @touchmove="move" @touchend="leave">
     <div :style="change">
       <transition-group :name="listName" class="move" ref="tg" tag="div">
-        <p5 class="pp" key="1" v-show="pshows[0]"></p5>
+        <p1 class="pp" key="1" v-show="pshows[0]"></p1>
         <p2 class="pp" key="2" v-show="pshows[1]"></p2>
         <p3 class="pp" key="3" v-show="pshows[2]" :is-show="pshows[2]"></p3>
         <p4 class="pp" key="4" v-show="pshows[3]"></p4>
@@ -65,45 +65,44 @@ export default {
       startY: 0,
       currentY: 0,
       endY: 0,
-      sl: "",
       timer: ""
     };
   },
   methods: {
     //鼠标滚轮滑动逻辑
     wheel(e) {
-      if (this.scrollActive) {
-        //避免多次滚动
-        this.scrollActive = false;
-        const changeScroll = () => {
-          this.scrollActive = true;
-        };
-        this.throttle(changeScroll, 1000)();
-        console.log(e);
-        let sd = e.wheelDelta || e.detail * -1;
+      const changeScroll = () => {
+        const sd = e.wheelDelta || -e.detail;
         if (sd > 0) {
           this.listUp();
         } else {
           this.listDown();
         }
-      }
-    },
-    throttle(func, wait) {
-      return () => {
-        clearTimeout(this.timer);
-        this.timer = setTimeout(() => {
-          func();
-        }, wait);
       };
+      this.throttle(changeScroll, 500);
     },
+    //节流
+    throttle(func, wait) {
+      if (this.scrollActive) {
+        func();
+      }
+      this.scrollActive = false;
+      clearTimeout(this.timer);
+      this.timer = setTimeout(() => {
+        this.scrollActive = true;
+      }, wait);
+    },
+    //touchstart 触发事件
     start(e) {
       this.touchStart = true;
       this.startY = e.touches[0].clientY;
     },
+    //touchmove 触发事件
     move(e) {
       this.currentY = e.touches[0].clientY;
       this.distance = this.currentY - this.startY;
     },
+    //touchend 触发事件
     leave(e) {
       this.distance = 0;
       this.touchStart = false;
@@ -114,6 +113,7 @@ export default {
         this.listUp();
       }
     },
+    // 向上逻辑
     listUp() {
       this.listName = "listup";
       if (this.count > 0) {
@@ -121,6 +121,7 @@ export default {
       }
       this.count = this.count <= 0 ? 0 : this.count - 1;
     },
+    //向下逻辑
     listDown() {
       this.listName = "listdown";
       if (this.count < this.pshows.length - 1) {

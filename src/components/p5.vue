@@ -3,14 +3,11 @@
     <div :class="$style.contain">
       <top :top-details="topDetails"></top>
       <div :class="$style.chart">
-        <div :class="$style.chartdeatil">
-          <div :class="[$style.q,$style.q1]">
-            <div :class="[$style.q,$style.q2]">
-              <div :class="[$style.q,$style.q3]">
-                <div :class="[$style.q,$style.q4]"></div>
-              </div>
-            </div>
-          </div>
+        <div :class="$style.chartdetail">
+          <div :class="[$style.q,$style.q1]"></div>
+          <div :class="[$style.q,$style.q2]"></div>
+          <div :class="[$style.q,$style.q3]"></div>
+          <div :class="[$style.q,$style.q4]"></div>
         </div>
         <div :class="[$style.chartq,$style.quarter1]">
           <div :class="$style.quarter">2015Q1</div>
@@ -129,31 +126,36 @@ export default {
 }
 .chartdetail {
   display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: flex-end;
   width: 374px;
   height: 374px;
 }
 .q {
   @mixin bg "@/assets/p5Q.png";
-  @mixin flexbox;
-  align-items: flex-end;
+  position: absolute;
   opacity: 0;
-  animation: p5growup 1.5s ease 5s forwards;
 }
 .q1 {
   width: 374px;
   height: 374px;
+  animation: p5growup 2s ease 5s forwards;
 }
 .q2 {
   width: 236px;
   height: 236px;
+  animation: p5growup 1.5s ease 5s forwards;
 }
 .q3 {
   width: 139px;
   height: 139px;
+  animation: p5growup 1s ease 5s forwards;
 }
 .q4 {
   width: 68px;
   height: 68px;
+  animation: p5growup 0.5s ease 5s forwards;
 }
 .chartq {
   position: absolute;
@@ -168,19 +170,19 @@ export default {
 .quarter1 {
   opacity: 0;
   bottom: 30px;
-  animation: fadein 0.5s ease 6s forwards;
+  animation: fadein 0.5s ease 5s forwards;
 }
 .quarter2 {
   bottom: 90px;
-  animation: fadein 0.5s ease 6.15s forwards;
+  animation: fadein 0.5s ease 5.5s forwards;
 }
 .quarter3 {
   bottom: 185px;
-  animation: fadein 0.5s ease 6.3s forwards;
+  animation: fadein 0.5s ease 6s forwards;
 }
 .quarter4 {
   bottom: 305px;
-  animation: fadein 0.5s ease 6.45s forwards;
+  animation: fadein 0.5s ease 6.5s forwards;
 }
 .dashline {
   position: relative;

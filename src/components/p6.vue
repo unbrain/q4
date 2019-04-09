@@ -157,7 +157,15 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
+  bottom: 0;
   animation: p6growup 1.5s linear 5s forwards;
+  @media (min-width: 750px) {
+    & {
+      transform: scale(1.25) !important;
+      left: -8vw;
+      top: 10vw;
+    }
+  }
 }
 .chartdetail {
   z-index: 100;

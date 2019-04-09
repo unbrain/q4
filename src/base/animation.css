@@ -87,7 +87,7 @@
 }
 
 /* 从右进入 */
-@keyframes leftin {
+@keyframes rightin {
   0% {
     transform: translateX(100%);
     opacity: 0;
@@ -194,11 +194,23 @@
 /* p6增高 */
 @keyframes p6growup {
   0% {
-    transform: translateX(10vw);
+    transform: translateX(0vw);
   }
 
   100% {
     transform: translateX(100vw);
+  }
+}
+
+@media (min-width: 750px) {
+  @keyframes p6growup {
+    0% {
+      transform: scale(1.25) translateX(0vw);
+    }
+
+    100% {
+      transform: scale(1.25) translateX(100vw);
+    }
   }
 }
 
@@ -276,9 +288,9 @@
     opacity: 1;
   }
 
-  80% {
+  90% {
     transform: scale(1.5);
-    opacity: .2;
+    opacity: 0;
   }
 
   100% {

@@ -101,14 +101,14 @@ export default {};
   width: 186px;
   height: 250px;
   opacity: 0;
-  animation: slideup 1s ease 4s forwards;
+  animation: leftin 1s ease 4s forwards;
 }
 .icon2 {
   @mixin bg "@/assets/p9icon2.png";
   width: 230px;
   height: 207px;
   opacity: 0;
-  animation: slideup 1s ease 5s forwards;
+  animation: rightin 1s ease 5s forwards;
 }
 .hua1 {
   @mixin bg "@/assets/p9hua1.png";

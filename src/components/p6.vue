@@ -180,21 +180,24 @@ export default {
   height: 26px;
   padding: 2px;
   opacity: 0;
-  animation: dropdown 0.5s ease 7s forwards;
 }
 .c1 {
   margin-bottom: 95px;
+  animation: dropdown 0.5s ease 7.5s forwards;
 }
 .c2 {
   margin-bottom: 165px;
+  animation: dropdown 0.5s ease 7.75s forwards;
 }
 .c3 {
   margin-bottom: 225px;
+  animation: dropdown 0.5s ease 8s forwards;
 }
 .c4 {
   @mixin bg "@/assets/p6Q1.png";
   padding: 4px;
   margin-bottom: 280px;
+  animation: dropdown 0.5s ease 8.25s forwards;
 }
 .q {
   display: flex;
@@ -203,7 +206,7 @@ export default {
   justify-content: center;
   & > div:nth-child(3) {
     opacity: 0;
-    animation: fadein 0.5s ease 6.5s forwards;
+    animation: fadein 0.5s ease 7s forwards;
   }
 }
 .qnum {
@@ -212,7 +215,7 @@ export default {
   font-size: 28px;
   color: #fff;
   opacity: 0;
-  animation: dropdown 0.5s ease 7s forwards;
+  animation: fadein 1s ease 9s forwards;
 }
 .dash {
   display: flex;
@@ -220,7 +223,7 @@ export default {
   position: absolute;
   left: -40px;
   opacity: 0;
-  animation: fadein 0.5s ease 6.5s forwards;
+  animation: leftin 0.5s ease 6.5s forwards;
 }
 .d1 {
   bottom: 40px;

@@ -1,3 +1,4 @@
+/* 自底向上 */
 @keyframes upaction {
   0% {
     transform: translateY(0);
@@ -10,6 +11,7 @@
   }
 }
 
+/* 竹子摇曳 */
 @keyframes bamboo {
   0% {
     transform: rotate(0);
@@ -36,6 +38,7 @@
   }
 }
 
+/* 蹦出 */
 @keyframes zoomInOut {
   0% {
     transform: scale(0, 0) translateZ(0);
@@ -57,6 +60,7 @@
   }
 }
 
+/* 从下进入 */
 @keyframes slideup {
   0% {
     transform: translateY(1000%);
@@ -69,6 +73,7 @@
   }
 }
 
+/* 从左进入 */
 @keyframes leftin {
   0% {
     transform: translateX(-100%);
@@ -81,6 +86,20 @@
   }
 }
 
+/* 从右进入 */
+@keyframes leftin {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 蹦出 */
 @keyframes titlenumin {
   0% {
     transform: translateY(30%) scale(0);
@@ -103,6 +122,7 @@
   }
 }
 
+/* 淡入 */
 @keyframes fadein {
   0% {
     opacity: 0;
@@ -113,6 +133,7 @@
   }
 }
 
+/* p2增高 */
 @keyframes p2growup {
   0% {
     transform: scaleY(0) translateZ(0);
@@ -127,7 +148,7 @@
   }
 }
 
-
+/* p4增高 */
 @keyframes p4growup {
   0% {
     transform: scale(1, 0);
@@ -142,6 +163,7 @@
   }
 }
 
+/* 落下 */
 @keyframes dropdown {
   0% {
     transform: translateY(-20vw);
@@ -154,6 +176,7 @@
   }
 }
 
+/* p5增高 */
 @keyframes p5growup {
   0% {
     transform: scale(0);
@@ -168,6 +191,7 @@
   }
 }
 
+/* p6增高 */
 @keyframes p6growup {
   0% {
     transform: translateX(10vw);
@@ -178,6 +202,7 @@
   }
 }
 
+/* 旋转变大 */
 @keyframes rotatebig {
   0% {
     transform: scale(0, 0) translateZ(0) rotate(0deg);
@@ -202,6 +227,7 @@
   }
 }
 
+/* 波浪升起 */
 @keyframes waveup {
   from {
     top: -100%;
@@ -214,6 +240,7 @@
   }
 }
 
+/* 旋转 */
 @keyframes rotate {
   50% {
     transform: translate(-83%, -77%) rotate(180deg);
@@ -224,6 +251,7 @@
   }
 }
 
+/* 波纹 */
 @keyframes ripple {
   0% {
     transform: scale(0.7);
@@ -236,6 +264,7 @@
   }
 }
 
+/* 烟花 */
 @keyframes fireworks {
   0% {
     transform: scale(0);

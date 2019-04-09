@@ -4,7 +4,7 @@
       <transition-group :name="listName" class="move" ref="tg" tag="div">
         <p1 class="pp" key="1" v-show="pshows[0]"></p1>
         <p2 class="pp" key="2" v-show="pshows[1]"></p2>
-        <p3 class="pp" key="3" v-show="pshows[2]"></p3>
+        <p3 class="pp" key="3" v-show="pshows[2]" :is-show="pshows[2]"></p3>
         <p4 class="pp" key="4" v-show="pshows[3]"></p4>
         <p5 class="pp" key="5" v-show="pshows[4]"></p5>
         <p6 class="pp" key="6" v-show="pshows[5]"></p6>
@@ -14,7 +14,7 @@
       </transition-group>
     </div>
     <div class="upwrap">
-      <div class="up" @click="listup"></div>
+      <div class="up" @click="listUp"></div>
     </div>
   </div>
 </template>
@@ -64,38 +64,38 @@ export default {
       touchStart: false,
       startY: 0,
       currentY: 0,
-      endY: 0
+      endY: 0,
+      sl: "",
+      timer: ""
     };
   },
   methods: {
+    //鼠标滚轮滑动逻辑
     wheel(e) {
       if (this.scrollActive) {
+        //避免多次滚动
         this.scrollActive = false;
-        setTimeout(() => {
+        const changeScroll = () => {
           this.scrollActive = true;
-        }, 1000);
+        };
+        this.throttle(changeScroll, 1000)();
+        console.log(e);
         let sd = e.wheelDelta || e.detail * -1;
         if (sd > 0) {
-          this.listName = "listup";
-          if (this.count > 0) {
-            this.pshows = this.pshows.slice(1).concat(this.pshows.slice(0, 1));
-          }
-          this.count = this.count <= 0 ? 0 : this.count - 1;
+          this.listUp();
         } else {
-          this.listName = "listdown";
-          if (this.count < this.pshows.length - 1) {
-            this.pshows = this.pshows
-              .slice(-1)
-              .concat(this.pshows.slice(0, -1));
-          }
-          this.count =
-            this.count >= this.pshows.length - 1
-              ? this.pshows.length - 1
-              : this.count + 1;
+          this.listDown();
         }
       }
     },
-    changeDisplay(n) {},
+    throttle(func, wait) {
+      return () => {
+        clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+          func();
+        }, wait);
+      };
+    },
     start(e) {
       this.touchStart = true;
       this.startY = e.touches[0].clientY;
@@ -109,24 +109,19 @@ export default {
       this.touchStart = false;
       this.endY = e.changedTouches[0].clientY;
       if (this.endY - this.startY < 0) {
-        this.listName = "listdown";
-        if (this.count < this.pshows.length - 1) {
-          this.pshows = this.pshows.slice(-1).concat(this.pshows.slice(0, -1));
-        }
-        this.count =
-          this.count >= this.pshows.length - 1
-            ? this.pshows.length - 1
-            : this.count + 1;
+        this.listDown();
       } else if (this.endY - this.startY > 0) {
-        this.listName = "listup";
-        if (this.count > 0) {
-          this.pshows = this.pshows.slice(1).concat(this.pshows.slice(0, 1));
-        }
-        this.count = this.count <= 0 ? 0 : this.count - 1;
+        this.listUp();
       }
     },
-    listup() {
-      console.log(0);
+    listUp() {
+      this.listName = "listup";
+      if (this.count > 0) {
+        this.pshows = this.pshows.slice(1).concat(this.pshows.slice(0, 1));
+      }
+      this.count = this.count <= 0 ? 0 : this.count - 1;
+    },
+    listDown() {
       this.listName = "listdown";
       if (this.count < this.pshows.length - 1) {
         this.pshows = this.pshows.slice(-1).concat(this.pshows.slice(0, -1));
@@ -137,6 +132,7 @@ export default {
           : this.count + 1;
     }
   },
+  mounted() {},
   computed: {
     change() {
       return {

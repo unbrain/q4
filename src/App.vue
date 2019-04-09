@@ -4,7 +4,7 @@
       <transition-group :name="listName" class="move" ref="tg" tag="div">
         <p1 class="pp" key="1" v-show="pshows[0]"></p1>
         <p2 class="pp" key="2" v-show="pshows[1]"></p2>
-        <p3 class="pp" key="3" v-show="pshows[2]" :is-show="pshows[2]"></p3>
+        <p3 class="pp" key="3" v-show="pshows[2]"></p3>
         <p4 class="pp" key="4" v-show="pshows[3]"></p4>
         <p5 class="pp" key="5" v-show="pshows[4]"></p5>
         <p6 class="pp" key="6" v-show="pshows[5]"></p6>

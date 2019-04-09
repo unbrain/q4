@@ -54,8 +54,8 @@ export default {};
 .titleimg {
   @mixin bg "@/assets/title.png";
   opacity: 0;
-  width: 300px;
-  height: 640px;
+  width: 285px;
+  height: 616px;
   animation: zoomInOut ease 1s forwards;
 }
 .keyword {

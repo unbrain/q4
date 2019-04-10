@@ -1,8 +1,8 @@
 <template>
   <div :class="$style.bg">
-    <div :class="$style.left"></div>
-    <div :class="$style.right"></div>
     <div :class="$style.wrap">
+      <div :class="$style.left"></div>
+      <div :class="$style.right"></div>
       <div :class="$style.titleimg"></div>
       <div :class="$style.buttonwrap">
         <div :class="$style.sharewrap">
@@ -26,22 +26,13 @@ export default {};
 <style lang="postcss" module>
 @import "../base/gobal.css";
 .bg {
-  @mixin bg "@/assets/bg2.png";
-  @mixin fullsize;
+  @mixin bg "@/assets/bg.png";
   display: flex;
   justify-content: center;
+  z-index: -1;
+  position: relative;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
-}
-
-.contain {
-  width: 532px;
-  margin: 0 54px;
-  padding-top: 75px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 }
 .left {
   @mixin bg "@/assets/p1left.png";
@@ -67,7 +58,9 @@ export default {};
 }
 .wrap {
   @mixin flexbox;
+  position: relative;
   flex-direction: column;
+  width: 640px;
   height: 100vh;
 }
 .titleimg {

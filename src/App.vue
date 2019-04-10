@@ -2,7 +2,7 @@
   <div id="app" @mousewheel="wheel" @touchstart="start" @touchmove="move" @touchend="leave">
     <div :style="change">
       <transition-group :name="listName" class="move" ref="tg" tag="div">
-        <p6 class="pp" key="1" v-show="pshows[0]"></p6>
+        <p1 class="pp" key="1" v-show="pshows[0]"></p1>
         <p2 class="pp" key="2" v-show="pshows[1]"></p2>
         <p3 class="pp" key="3" v-show="pshows[2]" :is-show="pshows[2]"></p3>
         <p4 class="pp" key="4" v-show="pshows[3]"></p4>

@@ -58,6 +58,7 @@ export default {};
 }
 
 .contain {
+  position: relative;
   width: 532px;
   margin: 0 54px;
   padding-top: 75px;

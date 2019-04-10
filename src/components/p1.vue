@@ -1,8 +1,8 @@
 <template>
   <div :class="$style.bg">
-    <div :class="$style.left"></div>
-    <div :class="$style.right"></div>
     <div :class="$style.wrap">
+      <div :class="$style.left"></div>
+      <div :class="$style.right"></div>
       <div :class="$style.titleimg"></div>
       <h1 :class="$style.keyword">微博2015Q4及全年财报</h1>
       <div :class="$style.weibo"></div>
@@ -18,11 +18,12 @@ export default {};
 @import "../base/gobal.css";
 .bg {
   @mixin bg "@/assets/bg.png";
+  display: flex;
+  justify-content: center;
   z-index: -1;
   position: relative;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
 }
 .left {
   @mixin bg "@/assets/p1left.png";
@@ -48,7 +49,9 @@ export default {};
 }
 .wrap {
   @mixin flexbox;
+  position: relative;
   flex-direction: column;
+  width: 640px;
   height: 100vh;
 }
 .titleimg {

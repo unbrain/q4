@@ -11,10 +11,11 @@
         <p7 class="pp" key="7" v-show="pshows[6]"></p7>
         <p8 class="pp" key="8" v-show="pshows[7]"></p8>
         <p9 class="pp" key="9" v-show="pshows[8]"></p9>
+        <p10 class="pp" key="10" v-show="pshows[9]"></p10>
       </transition-group>
     </div>
     <div class="upwrap">
-      <div class="up" @click="listUp"></div>
+      <div class="up" @click="listDown"></div>
     </div>
   </div>
 </template>
@@ -29,6 +30,7 @@ import p6 from "@/components/p6";
 import p7 from "@/components/p7";
 import p8 from "@/components/p8";
 import p9 from "@/components/p9";
+import p10 from "@/components/p10";
 
 export default {
   name: "app",
@@ -41,7 +43,8 @@ export default {
     p6,
     p7,
     p8,
-    p9
+    p9,
+    p10
   },
   data() {
     return {
@@ -79,10 +82,10 @@ export default {
           this.listDown();
         }
       };
-      this.throttle(changeScroll, 500);
+      this.immediate(changeScroll, 100);
     },
-    //节流
-    throttle(func, wait) {
+    //防抖动
+    immediate(func, wait) {
       if (this.scrollActive) {
         func();
       }
@@ -128,7 +131,7 @@ export default {
         this.pshows = this.pshows.slice(-1).concat(this.pshows.slice(0, -1));
       }
       this.count =
-        this.count >= this.pshows.length - 1
+        this.count === this.pshows.length - 1
           ? this.pshows.length - 1
           : this.count + 1;
     }
@@ -149,6 +152,12 @@ export default {
 @media (min-width: 750px) {
   .move > div > div {
     transform: scale(0.8);
+    transform-origin: center top;
+  }
+}
+@media (min-width: 1050px) {
+  .move > div > div {
+    transform: scale(0.5);
     transform-origin: center top;
   }
 }

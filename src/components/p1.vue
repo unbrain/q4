@@ -74,10 +74,4 @@ export default {};
   background-size: 100%;
   opacity: 0;
 }
-@media (min-width: 750px) {
-  .bg > div {
-    transform: scale(0.8);
-    transform-origin: center !important;
-  }
-}
 </style>

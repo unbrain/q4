@@ -77,12 +77,24 @@ export default {
 .bg {
   @mixin bg "@/assets/bg2.png";
   @mixin fullsize;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.contain {
+  width: 532px;
+  padding-top: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 .top {
   z-index: 11;
 }
 .contain {
-  margin: 0 54px;
   padding-top: 75px;
   display: flex;
   flex-direction: column;
@@ -159,13 +171,6 @@ export default {
   left: 0;
   bottom: 0;
   animation: p6growup 1.5s linear 5s forwards;
-  @media (min-width: 750px) {
-    & {
-      transform: scale(1.25) !important;
-      left: -8vw;
-      top: 10vw;
-    }
-  }
 }
 .chartdetail {
   z-index: 100;

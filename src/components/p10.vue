@@ -26,12 +26,22 @@ export default {};
 <style lang="postcss" module>
 @import "../base/gobal.css";
 .bg {
-  @mixin bg "@/assets/bg.png";
-  z-index: -1;
-  position: relative;
+  @mixin bg "@/assets/bg2.png";
+  @mixin fullsize;
+  display: flex;
+  justify-content: center;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+}
+
+.contain {
+  width: 532px;
+  margin: 0 54px;
+  padding-top: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 .left {
   @mixin bg "@/assets/p1left.png";

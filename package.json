@@ -55,17 +55,10 @@
       "postcss-write-svg": {},
       "postcss-cssnext": {},
       "precss": {},
-      "postcss-px-to-viewport": {
-        "viewportWidth": 640,
-        "viewportHeight": 1136,
-        "unitPrecision": 3,
-        "selectorBlackList": [
-          ".ignore",
-          ".hairlines"
-        ],
-        "propList": [
-          "*"
-        ]
+      "postcss-pxtorem": {
+        "rootValue": 27.3,
+        "propList": ["*"],
+        "propWhiteList": ["*", "!border", "!border-top", "!border-right", "!border-bottom", "!border-left", "!border-width"]
       }
     },
     "browserslist": [

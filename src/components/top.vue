@@ -32,21 +32,6 @@ export default {
 
 <style lang="postcss" module>
 @import "../base/gobal.css";
-.bg {
-  @mixin bg "@/assets/bg2.png";
-  @mixin fullsize;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-.contain {
-  margin: 0 54px;
-  padding-top: 75px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
 .description {
   @mixin line;
   padding: 32px 0 32px 40px;
